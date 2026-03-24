@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Dark Theme (default) ── */
+:root,
+[data-theme="dark"] {
+  --color-bg: #0a0a0a;
+  --color-fg: #ededed;
+  --color-heading: #ffffff;
+  --color-surface-val: #111111;
+  --color-surface-light-val: #1a1a1a;
+  --color-muted-val: #888888;
+  --color-border-val: #222222;
+}
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  --color-bg: #fafafa;
+  --color-fg: #1a1a1a;
+  --color-heading: #0a0a0a;
+  --color-surface-val: #ffffff;
+  --color-surface-light-val: #f0f0f0;
+  --color-muted-val: #666666;
+  --color-border-val: #e0e0e0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-heading: var(--color-heading);
+  --color-accent: #ff4500;
+  --color-accent-light: #ff6a33;
+  --color-accent-dark: #cc3700;
+  --color-surface: var(--color-surface-val);
+  --color-surface-light: var(--color-surface-light-val);
+  --color-muted: var(--color-muted-val);
+  --color-border: var(--color-border-val);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4500 var(--color-surface-val);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: rgba(255, 69, 0, 0.3);
+  color: #ffffff;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out both;
+}
+
+.animate-slide-left {
+  animation: slide-in-left 0.7s ease-out both;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.7s ease-out both;
 }
