@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineArrowLeft, HiOutlineClock } from "react-icons/hi2";
-import { useLanguage } from "@/context/LanguageContext";
+import MarkdownContent from "@/components/MarkdownContent";
 import type { BlogPost } from "@/lib/types";
 
 interface BlogPostContentProps {
@@ -10,12 +11,11 @@ interface BlogPostContentProps {
 }
 
 export default function BlogPostContent({ post }: BlogPostContentProps) {
-  const { locale, t } = useLanguage();
-
-  const formattedDate = new Date(post.createdAt).toLocaleDateString(
-    locale === "tr" ? "tr-TR" : "en-US",
-    { year: "numeric", month: "long", day: "numeric" }
-  );
+  const formattedDate = new Date(post.createdAt).toLocaleDateString("tr-TR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -26,7 +26,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
             className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors duration-300"
           >
             <HiOutlineArrowLeft className="w-4 h-4" />
-            {t("allPosts")}
+            Blog
           </Link>
 
           <header className="space-y-4 pb-8 border-b border-border">
@@ -43,6 +43,19 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
               {post.title}
             </h1>
 
+            {post.coverImageUrl && (
+              <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border">
+                <Image
+                  src={post.coverImageUrl}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                  unoptimized
+                />
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
@@ -55,16 +68,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
             </div>
           </header>
 
-          <div className="max-w-none">
-            <p className="text-foreground/60 leading-relaxed text-base">
-              {post.excerpt}
-            </p>
-            <div className="mt-12 rounded-xl bg-surface border border-border p-8 text-center">
-              <p className="text-muted text-sm">
-                {t("postComingSoon")}
-              </p>
-            </div>
-          </div>
+          <MarkdownContent content={post.content} />
         </div>
       </article>
     </main>

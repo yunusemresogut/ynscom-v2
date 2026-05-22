@@ -1,24 +1,32 @@
 import { notFound } from "next/navigation";
 import BlogPostContent from "@/components/BlogPostContent";
-import { placeholderPosts } from "@/lib/placeholder-posts";
+import { getPublishedPostBySlug } from "@/lib/posts";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = placeholderPosts.find((p) => p.slug === slug);
-  if (!post) return { title: "Post Not Found" };
+  const post = await getPublishedPostBySlug(slug);
+  if (!post) return { title: "Yazı Bulunamadı" };
   return {
-    title: `${post.title}`,
+    title: post.title,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      ...(post.coverImageUrl && { images: [post.coverImageUrl] }),
+    },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = placeholderPosts.find((p) => p.slug === slug);
+  const post = await getPublishedPostBySlug(slug);
 
   if (!post) notFound();
 

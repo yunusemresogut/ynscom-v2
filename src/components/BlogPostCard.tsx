@@ -3,18 +3,14 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/types";
 import { HiOutlineClock, HiOutlineArrowRight } from "react-icons/hi2";
-import { useLanguage } from "@/context/LanguageContext";
-
 interface BlogPostCardProps {
   post: BlogPost;
   index: number;
 }
 
 export default function BlogPostCard({ post, index }: BlogPostCardProps) {
-  const { locale } = useLanguage();
-
   const formattedDate = new Date(post.createdAt).toLocaleDateString(
-    locale === "tr" ? "tr-TR" : "en-US",
+    "tr-TR",
     { year: "numeric", month: "long", day: "numeric" }
   );
 

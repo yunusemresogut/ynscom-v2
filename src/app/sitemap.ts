@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
-import { placeholderPosts } from "@/lib/placeholder-posts";
+import { getPublishedSlugs } from "@/lib/posts";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogPosts = placeholderPosts.map((post) => ({
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const slugs = await getPublishedSlugs();
+
+  const blogPosts = slugs.map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
-    lastModified: new Date(post.createdAt),
+    lastModified: new Date(post.updatedAt),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

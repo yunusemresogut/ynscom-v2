@@ -6,6 +6,7 @@ import SettingsBar from "@/components/SettingsBar";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -93,6 +94,7 @@ export default function RootLayout({
           <SettingsBar />
           {children}
           <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

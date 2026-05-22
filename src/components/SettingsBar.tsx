@@ -1,12 +1,16 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
 
 export default function SettingsBar() {
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const { locale, toggleLocale } = useLanguage();
+
+  if (pathname.startsWith("/admin")) return null;
 
   return (
     <div className="fixed top-5 right-5 z-50 flex items-center gap-2">
