@@ -5,6 +5,7 @@ import Providers from "@/components/Providers";
 import SettingsBar from "@/components/SettingsBar";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -91,6 +92,7 @@ export default function RootLayout({
         <Providers>
           <SettingsBar />
           {children}
+          <Analytics />
         </Providers>
       </body>
     </html>

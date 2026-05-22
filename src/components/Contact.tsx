@@ -13,12 +13,12 @@ export default function Contact() {
       </h3>
       <div className="flex flex-col sm:flex-row gap-4">
         <a
-          href="mailto:yunusemresogut@gmail.com"
+          href="mailto:yunusesogut@gmail.com"
           className="group flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-light border border-border hover:border-accent/40 transition-all duration-300"
         >
           <HiOutlineEnvelope className="w-4 h-4 text-accent" />
           <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">
-            yunusemresogut@gmail.com
+            yunusesogut@gmail.com
           </span>
         </a>
         <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-light border border-border">
