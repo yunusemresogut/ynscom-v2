@@ -4,6 +4,12 @@ import { getPublishedSlugs } from "@/lib/posts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getPublishedSlugs();
+  const latestPostDate =
+    slugs.length > 0
+      ? new Date(
+          Math.max(...slugs.map((post) => new Date(post.updatedAt).getTime()))
+        )
+      : new Date();
 
   const blogPosts = slugs.map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
@@ -21,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date(),
+      lastModified: latestPostDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
