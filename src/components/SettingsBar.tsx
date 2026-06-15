@@ -10,7 +10,9 @@ export default function SettingsBar() {
   const { theme, toggleTheme } = useTheme();
   const { locale, toggleLocale } = useLanguage();
 
-  if (pathname.startsWith("/admin")) return null;
+  if (pathname.startsWith("/admin") || pathname.startsWith("/privacy-policy")) {
+    return null;
+  }
 
   return (
     <div className="fixed top-5 right-5 z-50 flex items-center gap-2">
