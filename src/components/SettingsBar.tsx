@@ -10,7 +10,11 @@ export default function SettingsBar() {
   const { theme, toggleTheme } = useTheme();
   const { locale, toggleLocale } = useLanguage();
 
-  if (pathname.startsWith("/admin") || pathname.startsWith("/privacy-policy")) {
+  if (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/privacy-policy") ||
+    pathname.startsWith("/quizircle")
+  ) {
     return null;
   }
 
