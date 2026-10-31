@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Yunus Emre Söğüt",
   url: "https://yunusemresogut.com",
   description:
-    "Personal website and blog of Yunus Emre Söğüt — Frontend Engineer & Full Stack Developer.",
+    "Personal website of Yunus Emre Söğüt, Frontend Engineer & Full Stack Developer.",
   author: {
     name: "Yunus Emre Söğüt",
     email: "yunusesogut@gmail.com",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProfileCard from "@/components/ProfileCard";
 import HeroSection from "@/components/HeroSection";
 import Skills from "@/components/Skills";
+import Apps from "@/components/Apps";
 import SocialLinks from "@/components/SocialLinks";
 import Contact from "@/components/Contact";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <section className="flex-1 flex flex-col gap-8 min-w-0">
           <HeroSection />
           <Skills />
+          <Apps />
           <SocialLinks />
           <Contact />
         </section>

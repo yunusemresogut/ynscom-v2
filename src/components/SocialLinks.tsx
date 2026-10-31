@@ -1,9 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { FaInstagram, FaXTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa6";
-import { HiOutlineBookOpen } from "react-icons/hi2";
-import { useLanguage } from "@/context/LanguageContext";
 
 const socials = [
   {
@@ -29,7 +26,6 @@ const socials = [
 ];
 
 export default function SocialLinks() {
-  const { t } = useLanguage();
 
   return (
     <div className="animate-fade-in flex flex-wrap items-center gap-3" style={{ animationDelay: "0.4s" }}>
@@ -45,14 +41,6 @@ export default function SocialLinks() {
           <social.icon className="w-4 h-4" />
         </a>
       ))}
-
-      <Link
-        href="/blog"
-        className="flex items-center gap-2 px-4 h-10 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-light transition-colors duration-300"
-      >
-        <HiOutlineBookOpen className="w-4 h-4" />
-        {t("blog")}
-      </Link>
     </div>
   );
 }

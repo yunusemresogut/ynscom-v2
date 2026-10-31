@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AppLegalLayout from "@/components/apps/LegalLayout";
 import { quizircleConfig } from "@/lib/quizircle-config";
 
 interface LegalLayoutProps {
@@ -9,56 +9,23 @@ interface LegalLayoutProps {
 }
 
 const links = [
-  { href: "/quizircle/privacy", label: "Privacy Policy", key: "privacy" as const },
-  { href: "/quizircle/terms", label: "Terms of Service", key: "terms" as const },
+  { href: "/quizircle", label: "Quizircle", key: "home" },
+  { href: "/quizircle/privacy", label: "Privacy Policy", key: "privacy" },
+  { href: "/quizircle/terms", label: "Terms of Service", key: "terms" },
   {
     href: "/quizircle/account-deletion",
     label: "Account Deletion",
-    key: "account-deletion" as const,
+    key: "account-deletion",
   },
 ];
 
-export default function LegalLayout({
-  title,
-  effectiveDate,
-  children,
-  active,
-}: LegalLayoutProps) {
+export default function LegalLayout(props: LegalLayoutProps) {
   return (
-    <main className="min-h-screen bg-background text-foreground px-4 sm:px-6 py-12 sm:py-16">
-      <article className="mx-auto max-w-3xl min-w-0">
-        <nav className="mb-8 flex flex-wrap gap-2 text-xs">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`px-3 py-1.5 rounded-lg border transition-colors ${
-                active === link.key
-                  ? "border-accent/40 text-accent bg-accent/10"
-                  : "border-border text-muted hover:text-accent hover:border-accent/40"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <header className="mb-10 pb-8 border-b border-border">
-          <p className="text-xs font-mono uppercase tracking-widest text-accent mb-2">
-            {quizircleConfig.appName}
-          </p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-heading tracking-tight">
-            {title}
-          </h1>
-          <p className="mt-3 text-sm text-muted">
-            Effective date: {effectiveDate}
-          </p>
-        </header>
-
-        <div className="space-y-8 text-sm sm:text-base text-foreground/80 leading-relaxed">
-          {children}
-        </div>
-      </article>
-    </main>
+    <AppLegalLayout
+      {...props}
+      appName={quizircleConfig.appName}
+      appHref="/quizircle"
+      links={links}
+    />
   );
 }

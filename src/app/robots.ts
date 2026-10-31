@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/admin/*", "/privacy-policy", "/quizircle", "/quizircle/*"],
+        disallow: ["/privacy-policy"],
       },
     ],
     host: siteConfig.url,

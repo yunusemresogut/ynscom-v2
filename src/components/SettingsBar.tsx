@@ -11,9 +11,9 @@ export default function SettingsBar() {
   const { locale, toggleLocale } = useLanguage();
 
   if (
-    pathname.startsWith("/admin") ||
     pathname.startsWith("/privacy-policy") ||
-    pathname.startsWith("/quizircle")
+    pathname.startsWith("/quizircle") ||
+    pathname.startsWith("/iznik-tiles")
   ) {
     return null;
   }
