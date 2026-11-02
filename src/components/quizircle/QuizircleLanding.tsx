@@ -104,7 +104,7 @@ const content = {
     },
     premiumTitle: "Quizircle Premium",
     premiumText:
-      "Optional, one-time purchase. No subscription. Unlimited play in every special category, unlimited weekly tournament tries, joker refills and extra time without ads, and a gold frame with a crown on your profile, leaderboards and duels.",
+      "Optional, one-time purchase. No subscription. Unlimited play in every special category, unlimited weekly tournament tries, no ads at all and a gold frame with a crown on your profile, leaderboards and duels.",
     ctaTitle: "Think you know your stuff?",
     ctaText: "Complete the letter circle, beat the clock and claim your spot on the leaderboard.",
     footer: { privacy: "Privacy Policy", terms: "Terms of Service", deletion: "Account Deletion", contact: "Contact" },
@@ -191,7 +191,7 @@ const content = {
     },
     premiumTitle: "Quizircle Premium",
     premiumText:
-      "İsteğe bağlı, tek seferlik ödeme. Abonelik yok. Tüm özel kategorilerde sınırsız oyun, haftalık turnuvada sınırsız deneme, reklamsız joker ve ek süre, profilde, sıralamalarda ve düellolarda altın çerçeve ile taç rozeti.",
+      "İsteğe bağlı, tek seferlik ödeme. Abonelik yok. Tüm özel kategorilerde sınırsız oyun, haftalık turnuvada sınırsız deneme, tamamen reklamsız oyun, profilde, sıralamalarda ve düellolarda altın çerçeve ile taç rozeti.",
     ctaTitle: "Bilgine güveniyor musun?",
     ctaText: "Harf çemberini tamamla, süreyi yen, sıralamada yerini al.",
     footer: { privacy: "Gizlilik Politikası", terms: "Kullanım Koşulları", deletion: "Hesap Silme", contact: "İletişim" },
